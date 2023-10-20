@@ -9,10 +9,10 @@ class StoresService {
   }
 
   generate(){
-    this.stores = [{id: 1, name: 'Caballito', location: 'Caba'}, {id: 2, name: 'Palermo', location: 'Caba'}];
+    this.stores = [{id: 1, name: 'Caballito', location: 'Caba', image: "https://picsum.photos/seed/jqxDmN/640/480"}, {id: 2, name: 'Palermo', location: 'Caba', image: "https://picsum.photos/seed/jqxDmN/640/480"}];
   }
 
-  create(){
+  create(data){
     const newStore = {
       id: faker.number.int({ min: 1, max: 1000 }),
       ...data
