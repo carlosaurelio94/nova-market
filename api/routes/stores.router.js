@@ -29,7 +29,7 @@ router.get('/:id', validatorHandler(getStoreScheme, 'params'), async (req, res, 
 router.post('/', validatorHandler(createStoreScheme, 'body'),async (req, res) => {
   const body = req.body;
   const newStore = await service.create(body);
-  res.status(201).json(newStoret);
+  res.status(201).json(newStore);
 });
 
 router.patch('/:id', validatorHandler(getStoreScheme, 'params'), validatorHandler(updateStoreScheme, 'body'),async (req, res, next) => {
