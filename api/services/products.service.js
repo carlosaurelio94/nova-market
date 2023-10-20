@@ -9,21 +9,12 @@ class ProductsService {
   }
 
   generate(){
-    const limit = 100
-    for (let index = 0; index < limit; index++) {
-      this.products.push({
-        id: faker.string.uuid(),
-        name: faker.commerce.productName(),
-        price: parseInt(faker.commerce.price(), 10),
-        image: faker.image.url(),
-        isBlock: faker.datatype.boolean(),
-      });
-    }
+    this.products = [{id: 1, name: 'Carrot', quantity: 50, price: 100}, {id: 2, name: 'Apple', quantity: 27, price: 50}];
   }
 
   async create(data){
     const newProduct = {
-      id: faker.string.uuid(),
+      id: faker.number.int({ min: 1, max: 1000 }),
       ...data
     }
     this.products.push(newProduct);
@@ -36,7 +27,6 @@ class ProductsService {
         resolve(this.products)
       }, 1000)
     })
-    return this.products;
   }
 
   async findOne(id){
@@ -51,7 +41,7 @@ class ProductsService {
   }
 
   async update(id, changes){
-    const index = this.products.findIndex(item => item.id === id);
+    const index = this.products.findIndex(item => item.id == id);
     if (index === -1) {
       throw boom.notFound('product not found');
     }
@@ -64,7 +54,7 @@ class ProductsService {
   }
 
   async delete(id){
-    const index = this.products.findIndex(item => item.id === id);
+    const index = this.products.findIndex(item => item.id == id);
     if(index === -1) {
       throw boom.notFound('product not found');
     }

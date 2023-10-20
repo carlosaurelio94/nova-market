@@ -11,7 +11,7 @@ const port = 3060;
 
 app.use(express.json());
 
-const whitelist = ['http://localhost:3060/**', 'https://paginaQueQuieroTengaAcceso.ok'];
+const whitelist = ['http://localhost:3060/*', 'https://paginaQueQuieroTengaAcceso.ok'];
 const options = {
   origin: (origin, callback) => {
     console.log("ORIGEN : ", origin)
@@ -23,7 +23,7 @@ const options = {
   }
 };
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('Bienvenidos a Nova Market');
 });
 
